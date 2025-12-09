@@ -14,7 +14,7 @@ export class Triangle implements Figure {
     public c: number
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
-      throw new Error('Algum comprimento é menor ou igual a 0')
+      throw new Error('All triangle sides must be positive numbers')
     }
 
     let maiorLado: number
@@ -36,12 +36,13 @@ export class Triangle implements Figure {
     }
 
     if (maiorLado >= menor1 + menor2) {
-      throw new Error(`Os lados ${a}, ${b}, ${c} não podem formar um triângulo`)
+      throw new Error(`The sides ${a}, ${b}, ${c} cannot form a triangle`)
     }
   }
 
   getArea(): number {
     const p = (this.a + this.b + this.c) / 2
+
     return Math.floor(Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c)) * 100) / 100
   }
 }
@@ -53,7 +54,9 @@ export class Circle implements Figure {
     public color: 'red' | 'green' | 'blue',
     public radius: number
   ) {
-    if (radius <= 0) throw new Error('O raio deve ser maior que 0')
+    if (radius <= 0) {
+      throw new Error('Radius must be greater than 0')
+    }
   }
 
   getArea(): number {
@@ -70,7 +73,7 @@ export class Rectangle implements Figure {
     public height: number
   ) {
     if (width <= 0 || height <= 0) {
-      throw new Error('Altura e largura devem ser maiores que 0')
+      throw new Error('Width and height must be greater than 0')
     }
   }
 
